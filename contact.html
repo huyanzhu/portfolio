@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent="teal">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>联系 · 胡均</title>
+    <meta
+      name="description"
+      content="联系胡均：2123484780@qq.com · GitHub @huyanzhu。寻找 AI 应用 / 技术支持方向机会，可全职投入。"
+    />
+    <link rel="canonical" href="https://huyanzhu.github.io/portfolio/contact.html" />
+    <meta name="author" content="胡均" />
+    <meta name="theme-color" content="#faf9f7" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="联系 · 胡均" />
+    <meta property="og:description" content="邮箱、GitHub 与留言表单。" />
+    <meta property="og:url" content="https://huyanzhu.github.io/portfolio/contact.html" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      (function () {
+        try {
+          var query = /[?&]theme=(dark|light)/.exec(window.location.search);
+          var t = query ? query[1] : window.localStorage.getItem("portfolio.theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (err) {
+          /* 读取失败时保持 CSS 默认（跟随系统） */
+        }
+        document.documentElement.setAttribute("data-js", "true");
+    </script>
+  </head>
+
+  <body data-page="联系">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" data-bind="profile.initials">HJ</span>
+          <span class="brand__text">
+            <span data-bind="profile.name">胡均</span>
+            <span class="brand__sub" data-bind="profile.headline">AI 应用实施 · 技术支持</span>
+          </span>
+        </a>
+
+        <nav class="nav__links" aria-label="主导航" data-render="nav-links">
+          <a class="nav__link" data-nav-link href="index.html">首页</a>
+          <a class="nav__link" data-nav-link href="projects.html">作品</a>
+          <a class="nav__link" data-nav-link href="about.html">关于</a>
+          <a class="nav__link" data-nav-link href="contact.html">联系</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="btn btn--icon"
+            type="button"
+            data-theme-toggle
+            aria-label="切换主题"
+          >
+            <svg class="icon" data-theme-icon="light" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+            </svg>
+            <svg class="icon" data-theme-icon="dark" viewBox="0 0 24 24" aria-hidden="true" hidden>
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+            </svg>
+          </button>
+          <button
+            class="btn btn--icon nav__toggle"
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="打开导航菜单"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__panel" id="nav-panel" data-nav-panel hidden>
+        <div class="container">
+          <ul data-render="nav-panel">
+            <li><a data-nav-link href="index.html">首页</a></li>
+            <li><a data-nav-link href="projects.html">作品</a></li>
+            <li><a data-nav-link href="about.html">关于</a></li>
+            <li><a data-nav-link href="contact.html">联系</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="container stack">
+          <p class="eyebrow">联系</p>
+          <h1>写清背景与目标，我们就能直接进入正题</h1>
+          <p class="lede">
+            邮件里说明「你是谁、要解决什么、期望的时间点」，我通常 1 个工作日内回复；
+            不确定要不要合作也可以先问。
+          </p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container split">
+          <div class="stack stack--lg">
+            <div class="card">
+              <p class="contact-row__label">邮箱</p>
+              <p class="text-xl">
+                <a href="mailto:2123484780@qq.com" data-contact="email-link">2123484780@qq.com</a>
+              </p>
+              <div class="hero__cta">
+                <button class="btn btn--primary" type="button" data-contact="copy-email">
+                  <span class="btn__label">复制邮箱</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-sm">其他入口</h2>
+              <div class="mt-3" data-render="socials">
+                <div class="contact-row">
+                  <div>
+                    <p class="contact-row__label">GitHub</p>
+                    <p class="contact-row__value">
+                      <a href="https://github.com/huyanzhu" rel="noopener" target="_blank">@example</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-render="contact-meta">
+              <div class="contact-row">
+                <div>
+                  <p class="contact-row__label">所在地</p>
+                  <p class="contact-row__value">成都 · 接受远程</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="text-xl">留言</h2>
+            <p class="muted text-sm">
+              表单不经过任何服务器：点发送后会用你自己的邮件客户端打开一封写好的邮件，
+              内容不会上传到第三方。
+            </p>
+
+            <form
+              class="form mt-3"
+              data-contact-form
+              action="mailto:2123484780@qq.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="field">
+                <label for="contact-name">怎么称呼你 <span class="field__required" aria-hidden="true">必填</span></label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  aria-describedby="contact-name-error"
+                />
+                <p class="field__error" id="contact-name-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="contact-email">你的邮箱 <span class="field__required" aria-hidden="true">必填</span></label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  aria-describedby="contact-email-hint contact-email-error"
+                />
+                <p class="field__hint" id="contact-email-hint">只会用于回复你，不会加入任何列表。</p>
+                <p class="field__error" id="contact-email-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="contact-message">想聊的事 <span class="field__required" aria-hidden="true">必填</span></label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  minlength="10"
+                  aria-describedby="contact-message-hint contact-message-error"
+                ></textarea>
+                <p class="field__hint" id="contact-message-hint">背景、目标、期望时间点；有链接更好。</p>
+                <p class="field__error" id="contact-message-error" aria-live="polite"></p>
+              </div>
+
+              <button class="btn btn--primary" type="submit">
+                <span class="btn__label">用邮件客户端发送</span>
+              </button>
+              <p class="form__status" data-form-status aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <p class="eyebrow" data-bind="profile.latinName">Hu Jun</p>
+            <p class="muted mt-3" data-bind="profile.bioShort">AI 应用实施 · 技术支持</p>
+          </div>
+          <div>
+            <h2>页面</h2>
+            <ul data-render="footer-nav">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="projects.html">作品</a></li>
+              <li><a href="about.html">关于</a></li>
+              <li><a href="contact.html">联系</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>联系</h2>
+            <ul>
+              <li>
+                <a href="mailto:2123484780@qq.com" data-contact="email-link">2123484780@qq.com</a>
+              </li>
+              <li><a href="https://github.com/huyanzhu" rel="noopener" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© <span data-year>2026</span> <span data-bind="profile.name">胡均</span></p>
+          <p class="footer__note">
+            <span data-sample-notice>示例内容 · 替换 assets/js/content.js 即可上线</span>
+          </p>
+          <p data-footer-note>本站为零依赖静态页：无跟踪脚本、无第三方请求。</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" data-toast role="status" hidden></div>
+
+    <script src="assets/js/content.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

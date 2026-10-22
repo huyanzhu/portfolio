@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent="teal">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>作品 · 胡均</title>
+    <meta
+      name="description"
+      content="胡均的作品集：AI 顾问、游客版政策咨询、顾问版查条款、AI-OS 方法论项目，可按标签筛选。"
+    />
+    <link rel="canonical" href="https://huyanzhu.github.io/portfolio/projects.html" />
+    <meta name="author" content="胡均" />
+    <meta name="theme-color" content="#faf9f7" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="作品 · 胡均" />
+    <meta property="og:description" content="4 个项目：3 个可点开的 AI 应用 + 1 个方法论项目。" />
+    <meta property="og:url" content="https://huyanzhu.github.io/portfolio/projects.html" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      (function () {
+        try {
+          var query = /[?&]theme=(dark|light)/.exec(window.location.search);
+          var t = query ? query[1] : window.localStorage.getItem("portfolio.theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (err) {
+          /* 读取失败时保持 CSS 默认（跟随系统） */
+        }
+        document.documentElement.setAttribute("data-js", "true");
+    </script>
+  </head>
+
+  <body data-page="作品">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" data-bind="profile.initials">HJ</span>
+          <span class="brand__text">
+            <span data-bind="profile.name">胡均</span>
+            <span class="brand__sub" data-bind="profile.headline">AI 应用实施 · 技术支持</span>
+          </span>
+        </a>
+
+        <nav class="nav__links" aria-label="主导航" data-render="nav-links">
+          <a class="nav__link" data-nav-link href="index.html">首页</a>
+          <a class="nav__link" data-nav-link href="projects.html">作品</a>
+          <a class="nav__link" data-nav-link href="about.html">关于</a>
+          <a class="nav__link" data-nav-link href="contact.html">联系</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="btn btn--icon"
+            type="button"
+            data-theme-toggle
+            aria-label="切换主题"
+          >
+            <svg class="icon" data-theme-icon="light" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+            </svg>
+            <svg class="icon" data-theme-icon="dark" viewBox="0 0 24 24" aria-hidden="true" hidden>
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+            </svg>
+          </button>
+          <button
+            class="btn btn--icon nav__toggle"
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="打开导航菜单"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__panel" id="nav-panel" data-nav-panel hidden>
+        <div class="container">
+          <ul data-render="nav-panel">
+            <li><a data-nav-link href="index.html">首页</a></li>
+            <li><a data-nav-link href="projects.html">作品</a></li>
+            <li><a data-nav-link href="about.html">关于</a></li>
+            <li><a data-nav-link href="contact.html">联系</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="container stack">
+          <p class="eyebrow">作品集</p>
+          <h1>做过什么，以及为什么这么做</h1>
+          <p class="lede">
+            每个案例都写清背景、我负责的部分和可核对的结果。标签可以筛选方向——
+            工具链、协作系统、可访问性各有侧重。
+          </p>
+        </div>
+      </div>
+
+      <section class="section section--tight">
+        <div class="container">
+          <div class="section-head">
+            <div class="filter" data-render="project-filters" role="group" aria-label="按标签筛选作品">
+              <button class="filter__btn" type="button" aria-pressed="true">全部</button>
+            </div>
+            <p class="mono muted" data-render="project-count" aria-live="polite">6 个案例</p>
+          </div>
+
+          <div
+            class="grid grid--3"
+            data-render="all-projects"
+            role="region"
+            aria-label="作品列表"
+          >
+            <a class="project-card" href="projects.html">
+              <div class="project-card__media"></div>
+              <div class="project-card__body">
+                <div class="project-card__top"><h3 class="project-card__title">作品加载中</h3></div>
+                <p class="project-card__summary">
+                  如果没有看到作品列表，说明页面脚本未能运行，可直接刷新重试。
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="empty" data-render="projects-empty" hidden>
+            <svg class="empty__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.5 8.5l-2 5-5 2 2-5z" />
+            </svg>
+            <h3>这个标签下还没有项目</h3>
+            <p>换个标签，或者查看全部作品。</p>
+            <button class="btn btn--ghost" type="button" data-empty-reset>
+              <span class="btn__label">查看全部作品</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <p class="eyebrow" data-bind="profile.latinName">Hu Jun</p>
+            <p class="muted mt-3" data-bind="profile.bioShort">AI 应用实施 · 技术支持</p>
+          </div>
+          <div>
+            <h2>页面</h2>
+            <ul data-render="footer-nav">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="projects.html">作品</a></li>
+              <li><a href="about.html">关于</a></li>
+              <li><a href="contact.html">联系</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>联系</h2>
+            <ul>
+              <li>
+                <a href="mailto:2123484780@qq.com" data-contact="email-link">2123484780@qq.com</a>
+              </li>
+              <li><a href="https://github.com/huyanzhu" rel="noopener" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© <span data-year>2026</span> <span data-bind="profile.name">胡均</span></p>
+          <p class="footer__note">
+            <span data-sample-notice>示例内容 · 替换 assets/js/content.js 即可上线</span>
+          </p>
+          <p data-footer-note>本站为零依赖静态页：无跟踪脚本、无第三方请求。</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" data-toast role="status" hidden></div>
+
+    <script src="assets/js/content.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

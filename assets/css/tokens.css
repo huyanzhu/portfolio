@@ -1,0 +1,209 @@
+/* =============================================================================
+   tokens.css — 设计令牌（单一来源）
+   个人作品集站 · 静态零依赖
+   规则：页面/组件只使用语义令牌（--bg / --text / --accent ...），
+        不出现硬编码 hex；换肤 = 只改本文件。
+   刻度：间距 4→128（8px 栅格为主）· 圆角 sm8 / md12 / lg16 / pill
+        动效统一 300ms cubic-bezier(.22,1,.36,1)，全部受 reduced-motion 约束。
+   ============================================================================= */
+
+:root {
+  /* ---- 字体族 ---------------------------------------------------------- */
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+  --font-display: Georgia, "Times New Roman", "Songti SC", serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---- 字号刻度（展示层流式，正文固定） -------------------------------- */
+  --fs-xs: 0.8125rem;   /* 13 */
+  --fs-sm: 0.875rem;    /* 14 */
+  --fs-base: 1rem;      /* 16 */
+  --fs-lg: 1.125rem;    /* 18 */
+  --fs-xl: 1.375rem;    /* 22 */
+  --fs-2xl: clamp(1.625rem, 1.4rem + 1.1vw, 2.125rem);
+  --fs-3xl: clamp(2.25rem, 1.55rem + 3.2vw, 3.75rem);
+
+  /* ---- 行高：展示紧、正文松（中文正文需要更大行距） -------------------- */
+  --lh-tight: 1.14;
+  --lh-base: 1.75;
+
+  /* ---- 字距 ------------------------------------------------------------ */
+  --ls-tight: -0.02em;
+  --ls-wide: 0.08em;
+
+  /* ---- 间距刻度（8px 栅格） -------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-10: 128px;
+
+  /* ---- 圆角（统一刻度，禁止混用自由值） -------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---- 控件尺寸（触控目标下限，WCAG 2.5.5 建议 44px） ------------------ */
+  --control-h: 44px;
+  --size-mark: 28px;      /* 品牌方块 */
+  --size-textarea: 132px; /* 留言框初始高度 */
+
+  /* ---- 版式尺寸 -------------------------------------------------------- */
+  --container: 1120px;
+  --measure: 68ch;          /* 正文行长上限 */
+  --gutter: clamp(20px, 4vw, 24px);
+  --section-y: clamp(56px, 7vw, 104px);
+  --section-y-tight: clamp(40px, 5vw, 64px);
+  --hero-y-top: clamp(48px, 8vw, 112px);
+  --hero-y-bottom: clamp(40px, 6vw, 80px);
+  --page-head-y: clamp(40px, 6vw, 72px);
+  --nav-h: 64px;
+
+  /* ---- 动效 ------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-slow: 600ms;
+  --stagger: 80ms;
+
+  /* ---- 层级 ------------------------------------------------------------ */
+  --z-nav: 100;
+  --z-toast: 200;
+
+  /* ---- 浅色主题语义色（暖中性 + 单一松绿强调） ------------------------- */
+  --bg: #faf9f7;
+  --bg-subtle: #f2f0ec;
+  --surface: #ffffff;
+  --surface-2: #f7f6f3;
+  --border: #e4e1da;
+  --border-strong: #8f8a80;   /* 功能性边框（输入框/按钮/焦点相关）：对底色 >= 3:1 */
+  --text: #1c1b19;           /* 近黑，非纯黑 */
+  --text-secondary: #55524c;
+  --text-muted: #6e6960;
+  --accent: #0f6b5c;
+  --accent-hover: #0b5449;
+  --accent-soft: #e6f1ee;
+  --accent-contrast: #ffffff;
+  --danger: #b3261e;
+  --focus-ring: #0f6b5c;
+
+  /* ---- 阴影：分层低透明着色，非单层硬黑 -------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(28, 27, 25, 0.05),
+    0 1px 1px rgba(28, 27, 25, 0.04);
+  --shadow-md: 0 2px 4px rgba(28, 27, 25, 0.05),
+    0 8px 20px -8px rgba(28, 27, 25, 0.12);
+  --shadow-lg: 0 4px 8px rgba(28, 27, 25, 0.06),
+    0 20px 40px -16px rgba(28, 27, 25, 0.18);
+
+  color-scheme: light;
+}
+
+/* ---- 深色主题：显式选择 或 系统偏好（未被显式覆盖时） ------------------- */
+:root[data-theme="dark"] {
+  --bg: #14120e;
+  --bg-subtle: #1b1815;
+  --surface: #1c1a16;
+  --surface-2: #221f1a;
+  --border: #2e2a24;
+  --border-strong: #78705f;   /* 深色下同样满足非文字对比度 >= 3:1 */
+  --text: #f0ede7;
+  --text-secondary: #b9b3a8;
+  --text-muted: #8c877d;
+  --accent: #63c9b4;
+  --accent-hover: #86d8c6;
+  --accent-soft: #17302b;
+  --accent-contrast: #0b1f1a;
+  --danger: #f2b8b5;
+  --focus-ring: #63c9b4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 20px -8px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4), 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14120e;
+    --bg-subtle: #1b1815;
+    --surface: #1c1a16;
+    --surface-2: #221f1a;
+    --border: #2e2a24;
+    --border-strong: #78705f;
+    --text: #f0ede7;
+    --text-secondary: #b9b3a8;
+    --text-muted: #8c877d;
+    --accent: #63c9b4;
+    --accent-hover: #86d8c6;
+    --accent-soft: #17302b;
+    --accent-contrast: #0b1f1a;
+    --danger: #f2b8b5;
+    --focus-ring: #63c9b4;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35),
+      0 8px 20px -8px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4),
+      0 20px 40px -16px rgba(0, 0, 0, 0.7);
+    color-scheme: dark;
+  }
+}
+
+/* ---- 动效收敛：用户要求减少动效时，所有时长归零（统一兜底） ------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+    --stagger: 0ms;
+  }
+}
+
+/* ---- 强调色预设：<html data-accent="teal|indigo|clay"> 可换品牌色 -------- */
+:root[data-accent="indigo"] {
+  --accent: #2f4fb8;
+  --accent-hover: #243d92;
+  --accent-soft: #e8ecfa;
+  --focus-ring: #2f4fb8;
+}
+:root[data-accent="clay"] {
+  --accent: #9a4a1f;
+  --accent-hover: #7c3a17;
+  --accent-soft: #f7ece4;
+  --focus-ring: #9a4a1f;
+}
+:root[data-theme="dark"][data-accent="indigo"],
+:root[data-accent="indigo"]:where([data-theme="dark"]) {
+  --accent: #93a8ff;
+  --accent-hover: #b3c2ff;
+  --accent-soft: #1b2140;
+  --accent-contrast: #0e1430;
+  --focus-ring: #93a8ff;
+}
+:root[data-theme="dark"][data-accent="clay"] {
+  --accent: #e2a077;
+  --accent-hover: #eeb894;
+  --accent-soft: #33231a;
+  --accent-contrast: #2a1608;
+  --focus-ring: #e2a077;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"])[data-accent="indigo"] {
+    --accent: #93a8ff;
+    --accent-hover: #b3c2ff;
+    --accent-soft: #1b2140;
+    --accent-contrast: #0e1430;
+    --focus-ring: #93a8ff;
+  }
+  :root:not([data-theme="light"])[data-accent="clay"] {
+    --accent: #e2a077;
+    --accent-hover: #eeb894;
+    --accent-soft: #33231a;
+    --accent-contrast: #2a1608;
+    --focus-ring: #e2a077;
+  }
+}

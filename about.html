@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent="teal">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>关于 · 胡均</title>
+    <meta
+      name="description"
+      content="胡均的简介、技能、项目经历与教育背景：大数据技术专业，AI 应用实施 / 技术支持方向，主线项目 AI-OS。"
+    />
+    <link rel="canonical" href="https://huyanzhu.github.io/portfolio/about.html" />
+    <meta name="author" content="胡均" />
+    <meta name="theme-color" content="#faf9f7" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="关于 · 胡均" />
+    <meta property="og:description" content="简介、技能、项目经历与教育背景。" />
+    <meta property="og:url" content="https://huyanzhu.github.io/portfolio/about.html" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      (function () {
+        try {
+          var query = /[?&]theme=(dark|light)/.exec(window.location.search);
+          var t = query ? query[1] : window.localStorage.getItem("portfolio.theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (err) {
+          /* 读取失败时保持 CSS 默认（跟随系统） */
+        }
+        document.documentElement.setAttribute("data-js", "true");
+    </script>
+  </head>
+
+  <body data-page="关于">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" data-bind="profile.initials">HJ</span>
+          <span class="brand__text">
+            <span data-bind="profile.name">胡均</span>
+            <span class="brand__sub" data-bind="profile.headline">AI 应用实施 · 技术支持</span>
+          </span>
+        </a>
+
+        <nav class="nav__links" aria-label="主导航" data-render="nav-links">
+          <a class="nav__link" data-nav-link href="index.html">首页</a>
+          <a class="nav__link" data-nav-link href="projects.html">作品</a>
+          <a class="nav__link" data-nav-link href="about.html">关于</a>
+          <a class="nav__link" data-nav-link href="contact.html">联系</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="btn btn--icon"
+            type="button"
+            data-theme-toggle
+            aria-label="切换主题"
+          >
+            <svg class="icon" data-theme-icon="light" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+            </svg>
+            <svg class="icon" data-theme-icon="dark" viewBox="0 0 24 24" aria-hidden="true" hidden>
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+            </svg>
+          </button>
+          <button
+            class="btn btn--icon nav__toggle"
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="打开导航菜单"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__panel" id="nav-panel" data-nav-panel hidden>
+        <div class="container">
+          <ul data-render="nav-panel">
+            <li><a data-nav-link href="index.html">首页</a></li>
+            <li><a data-nav-link href="projects.html">作品</a></li>
+            <li><a data-nav-link href="about.html">关于</a></li>
+            <li><a data-nav-link href="contact.html">联系</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="container stack">
+          <p class="eyebrow">关于</p>
+          <h1>把 Agent 的概念，做成可运行、可检查的机制</h1>
+          <div class="hero__cta">
+            <button class="btn btn--ghost" type="button" data-print>
+              <span class="btn__label">打印 / 存为 PDF</span>
+            </button>
+            <a class="btn btn--primary" href="contact.html">
+              <span class="btn__label">联系我</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container split">
+          <div class="stack stack--lg">
+            <figure class="hero-figure">
+              <img
+                src="assets/img/avatar.svg"
+                alt="抽象几何构成的头像占位图"
+                width="640"
+                height="400"
+                data-bind-attr="src:profile.avatar"
+              />
+              <figcaption>头像占位：替换 assets/img/avatar.svg 或改 content.js 的 profile.avatar</figcaption>
+            </figure>
+            <div class="prose" data-render="bio">
+              <p>
+                我是大数据技术专业的学生，主要关注 AI 应用实施与 Agent 协作。
+              </p>
+            </div>
+          </div>
+
+          <aside class="stack stack--lg">
+            <h2 class="text-xl">技能</h2>
+            <div class="stack" data-render="skills">
+              <div class="card">
+                <h3 class="capability__index">前端</h3>
+                <div class="tag-list"><span class="tag">TypeScript</span></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container">
+          <div class="section-head">
+            <h2>工作经历</h2>
+            <p class="mono muted">按时间倒序</p>
+          </div>
+          <ol class="timeline" data-render="timeline">
+            <li class="timeline__item">
+              <p class="timeline__period">2023.06 — 至今</p>
+              <h3 class="timeline__role">项目设计与实现推进</h3>
+              <p class="timeline__org">个人项目</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split">
+          <div>
+            <h2 class="text-xl">教育</h2>
+            <div class="mt-3" data-render="education">
+              <div class="contact-row">
+                <div>
+                  <p class="contact-row__value">本科 · 软件工程</p>
+                  <p class="field__hint">工学学士</p>
+                </div>
+                <span class="mono muted">2015 — 2019</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <p class="eyebrow">下一步</p>
+            <h2 class="text-xl">想看具体做了什么？</h2>
+            <p class="muted">6 个案例写了背景、我的角色和可核对的结果。</p>
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="projects.html">
+                <span class="btn__label">看作品</span>
+              </a>
+              <a class="btn btn--ghost" href="contact.html">
+                <span class="btn__label">联系方式</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <p class="eyebrow" data-bind="profile.latinName">Hu Jun</p>
+            <p class="muted mt-3" data-bind="profile.bioShort">AI 应用实施 · 技术支持</p>
+          </div>
+          <div>
+            <h2>页面</h2>
+            <ul data-render="footer-nav">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="projects.html">作品</a></li>
+              <li><a href="about.html">关于</a></li>
+              <li><a href="contact.html">联系</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>联系</h2>
+            <ul>
+              <li>
+                <a href="mailto:2123484780@qq.com" data-contact="email-link">2123484780@qq.com</a>
+              </li>
+              <li><a href="https://github.com/huyanzhu" rel="noopener" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© <span data-year>2026</span> <span data-bind="profile.name">胡均</span></p>
+          <p class="footer__note">
+            <span data-sample-notice>示例内容 · 替换 assets/js/content.js 即可上线</span>
+          </p>
+          <p data-footer-note>本站为零依赖静态页：无跟踪脚本、无第三方请求。</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" data-toast role="status" hidden></div>
+
+    <script src="assets/js/content.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

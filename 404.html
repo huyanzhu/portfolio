@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent="teal">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>页面不存在 · 胡均</title>
+    <meta name="description" content="这个地址没有对应的页面。可以回到首页或作品列表继续浏览。" />
+    <meta name="robots" content="noindex" />
+    <meta name="author" content="胡均" />
+    <meta name="theme-color" content="#faf9f7" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      (function () {
+        try {
+          var query = /[?&]theme=(dark|light)/.exec(window.location.search);
+          var t = query ? query[1] : window.localStorage.getItem("portfolio.theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (err) {
+          /* 读取失败时保持 CSS 默认（跟随系统） */
+        }
+        document.documentElement.setAttribute("data-js", "true");
+    </script>
+  </head>
+
+  <body data-page="页面不存在">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" data-bind="profile.initials">HJ</span>
+          <span class="brand__text">
+            <span data-bind="profile.name">胡均</span>
+            <span class="brand__sub" data-bind="profile.headline">AI 应用实施 · 技术支持</span>
+          </span>
+        </a>
+
+        <nav class="nav__links" aria-label="主导航" data-render="nav-links">
+          <a class="nav__link" data-nav-link href="index.html">首页</a>
+          <a class="nav__link" data-nav-link href="projects.html">作品</a>
+          <a class="nav__link" data-nav-link href="about.html">关于</a>
+          <a class="nav__link" data-nav-link href="contact.html">联系</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="btn btn--icon"
+            type="button"
+            data-theme-toggle
+            aria-label="切换主题"
+          >
+            <svg class="icon" data-theme-icon="light" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+            </svg>
+            <svg class="icon" data-theme-icon="dark" viewBox="0 0 24 24" aria-hidden="true" hidden>
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
+            </svg>
+          </button>
+          <button
+            class="btn btn--icon nav__toggle"
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="打开导航菜单"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__panel" id="nav-panel" data-nav-panel hidden>
+        <div class="container">
+          <ul data-render="nav-panel">
+            <li><a data-nav-link href="index.html">首页</a></li>
+            <li><a data-nav-link href="projects.html">作品</a></li>
+            <li><a data-nav-link href="about.html">关于</a></li>
+            <li><a data-nav-link href="contact.html">联系</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="section">
+        <div class="container">
+          <div class="empty">
+            <svg class="empty__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.5 8.5l-2 5-5 2 2-5z" />
+            </svg>
+            <h1>这个地址没有对应的页面</h1>
+            <p>链接可能拼错，或者页面已经改名。下面两个入口通常能带你找到想要的东西。</p>
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="index.html">
+                <span class="btn__label">回到首页</span>
+              </a>
+              <a class="btn btn--ghost" href="projects.html">
+                <span class="btn__label">看作品</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__bottom">
+          <p>© <span data-year>2026</span> <span data-bind="profile.name">胡均</span></p>
+          <p data-footer-note>本站为零依赖静态页：无跟踪脚本、无第三方请求。</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/content.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
