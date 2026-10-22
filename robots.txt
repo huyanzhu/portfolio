@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-# 部署后把下面的域名换成你的真实域名，并同步 sitemap.xml / 各页面 canonical
 Sitemap: https://huyanzhu.github.io/portfolio/sitemap.xml
