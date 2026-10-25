@@ -582,6 +582,13 @@
     fill("[data-detail='verification']", detail.verification);
     fill("[data-detail='outcome']", detail.outcome);
 
+    /* 方向进展提示（仅填了该字段的项目显示；链接固定指向关于页 #direction） */
+    var directionNote = detail.directionNote || "";
+    var directionNoteWrap = $("[data-detail='direction-note-wrap']");
+    if (directionNoteWrap) directionNoteWrap.hidden = !directionNote;
+    var directionNoteHost = $("[data-detail='direction-note']");
+    if (directionNoteHost) directionNoteHost.textContent = directionNote;
+
     var cover = $("[data-detail='cover']");
     if (cover) {
       var figure = cover.closest("figure");
@@ -784,6 +791,18 @@
       });
       clear(bioHost);
       bioHost.appendChild(bioFragment);
+    }
+
+    var directionHost = $("[data-render='direction']");
+    var direction =
+      PROFILE.direction && Array.isArray(PROFILE.direction.paragraphs) ? PROFILE.direction.paragraphs : [];
+    if (directionHost && direction.length) {
+      var directionFragment = document.createDocumentFragment();
+      direction.forEach(function (paragraph) {
+        directionFragment.appendChild(el("p", null, paragraph));
+      });
+      clear(directionHost);
+      directionHost.appendChild(directionFragment);
     }
   });
 
