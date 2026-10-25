@@ -114,7 +114,7 @@
             <p class="eyebrow" data-detail="year">—</p>
             <h1 data-detail="title">请从作品列表打开一个项目</h1>
             <p class="lede" data-detail="summary">
-              从作品列表进入任意项目，这里会显示它的背景、我负责的部分和结果。
+              从作品列表进入任意项目，这里会显示它的问题、我做了什么、关键决策、如何验证以及已知限制。
             </p>
             <div class="tag-list" data-detail="tags"></div>
           </div>
@@ -131,11 +131,15 @@
         <section class="section">
           <div class="container split">
             <div class="prose">
-              <h2 id="bg">这是什么、给谁用</h2>
+              <h2 id="bg">问题是什么</h2>
               <p data-detail="background">—</p>
-              <h2 id="work">怎么做</h2>
+              <h2 id="work">我做了什么</h2>
               <p data-detail="contribution">—</p>
-              <h2 id="result">做到哪一步、边界在哪</h2>
+              <h2 id="decision">关键决策</h2>
+              <p data-detail="decisions">—</p>
+              <h2 id="verify">如何验证</h2>
+              <p data-detail="verification">—</p>
+              <h2 id="result">还有什么限制</h2>
               <p data-detail="outcome">—</p>
             </div>
 
@@ -156,6 +160,11 @@
                 <ul class="bullet-list" data-detail="highlights">
                   <li>—</li>
                 </ul>
+              </div>
+
+              <div class="card" data-detail="evidence-wrap" hidden>
+                <h2 class="text-xl">验证材料</h2>
+                <ul class="bullet-list" data-detail="evidence"></ul>
               </div>
 
               <div class="stack" data-detail="links-wrap">

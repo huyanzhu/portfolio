@@ -566,6 +566,8 @@
     fill("[data-detail='role']", project.role);
     fill("[data-detail='background']", detail.background);
     fill("[data-detail='contribution']", detail.contribution);
+    fill("[data-detail='decisions']", detail.decisions);
+    fill("[data-detail='verification']", detail.verification);
     fill("[data-detail='outcome']", detail.outcome);
 
     var cover = $("[data-detail='cover']");
@@ -604,6 +606,32 @@
       });
       clear(listHost);
       listHost.appendChild(listFragment);
+    }
+
+    var evidence = (Array.isArray(project.evidence) ? project.evidence : []).filter(function (item) {
+      return item && (item.label || item.url);
+    });
+    var evidenceHost = $("[data-detail='evidence']");
+    var evidenceWrap = evidenceHost ? evidenceHost.closest("[data-detail='evidence-wrap']") : null;
+    if (evidenceWrap) evidenceWrap.hidden = evidence.length === 0;
+    if (evidenceHost && evidence.length) {
+      var evidenceFragment = document.createDocumentFragment();
+      evidence.forEach(function (item) {
+        var row = el("li");
+        if (item.url) {
+          var a = el("a", null, item.label || item.url);
+          a.href = item.url;
+          a.rel = "noopener";
+          if (/^https?:/i.test(item.url)) a.target = "_blank";
+          row.appendChild(a);
+        } else {
+          row.appendChild(document.createTextNode(item.label || ""));
+        }
+        if (item.note) row.appendChild(el("p", "field__hint", item.note));
+        evidenceFragment.appendChild(row);
+      });
+      clear(evidenceHost);
+      evidenceHost.appendChild(evidenceFragment);
     }
 
     var links = (Array.isArray(project.links) ? project.links : []).filter(function (link) {
@@ -722,6 +750,17 @@
       clear(principleHost);
       principleHost.appendChild(principleFragment);
       observeReveals(principleHost);
+    }
+
+    var positioningHost = $("[data-render='positioning']");
+    var positioning = Array.isArray(PROFILE.positioning) ? PROFILE.positioning : [];
+    if (positioningHost && positioning.length) {
+      var positioningFragment = document.createDocumentFragment();
+      positioning.forEach(function (paragraph) {
+        positioningFragment.appendChild(el("p", null, paragraph));
+      });
+      clear(positioningHost);
+      positioningHost.appendChild(positioningFragment);
     }
 
     var bioHost = $("[data-render='bio']");
