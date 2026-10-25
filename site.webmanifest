@@ -1,7 +1,7 @@
 {
-  "name": "林未 · 前端工程师作品集",
-  "short_name": "林未",
-  "description": "前端工程与交互设计方向的作品集。",
+  "name": "胡均 · AI 应用实施与工作流自动化",
+  "short_name": "胡均",
+  "description": "胡均的作品集：AI 应用实施、工作流自动化与 Agent 协作；三个可点开的 AI 应用与主线项目 AI-OS。",
   "lang": "zh-CN",
   "start_url": "index.html",
   "scope": ".",

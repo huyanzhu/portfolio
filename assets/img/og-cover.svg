@@ -9,7 +9,7 @@
   <circle cx="1000" cy="470" r="150" fill="none" stroke="#2e7d6e" stroke-width="3" opacity="0.45"/>
   <circle cx="1000" cy="470" r="74" fill="none" stroke="#b9b2a6" stroke-width="2" opacity="0.35"/>
   <line x1="96" y1="150" x2="420" y2="150" stroke="#2e7d6e" stroke-width="3"/>
-  <text x="96" y="300" font-family="Georgia, serif" font-size="92" fill="#1c1b19">Lin Wei</text>
-  <text x="96" y="378" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#55524c">前端工程师 · 交互设计</text>
+  <text x="96" y="300" font-family="Georgia, serif" font-size="92" fill="#1c1b19">Hu Jun</text>
+  <text x="96" y="378" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#55524c">AI 应用实施 · 工作流自动化</text>
   <text x="96" y="520" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#6e675c">portfolio · projects · contact</text>
 </svg>

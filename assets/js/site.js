@@ -553,6 +553,18 @@
     var desc = $('meta[name="description"]');
     if (desc && project.summary) desc.setAttribute("content", project.summary);
 
+    /* 详情页的 canonical / og 跟随 ?id=：否则多个项目共用同一份分享元数据 */
+    var shareUrl = (SITE.url || "") + "/project.html?id=" + encodeURIComponent(project.id || "");
+    var canonicalNode = $('link[rel="canonical"]');
+    if (canonicalNode) canonicalNode.setAttribute("href", shareUrl);
+    $$('meta[property="og:url"]').forEach(function (node) {
+      node.setAttribute("content", shareUrl);
+    });
+    var ogTitle = $('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", project.title || SITE.title || "");
+    var ogDesc = $('meta[property="og:description"]');
+    if (ogDesc && project.summary) ogDesc.setAttribute("content", project.summary);
+
     function fill(selector, value) {
       /* 同一钩子可能在页面上出现多次（如年份同时出现在 eyebrow 与信息表），全部填充 */
       $$(selector).forEach(function (node) {
