@@ -176,14 +176,17 @@ window.SITE_CONTENT = {
       "links": [
         {
           "label": "AI 顾问 · 需求文档",
+          "desc": "一句话想法 → 结构化需求文档；导出标注 AI 生成、尚待确认",
           "url": "https://clinquant-pie-ebd6fd.netlify.app"
         },
         {
           "label": "游客版 · 政策咨询",
+          "desc": "游客自助查政策，回答有资料依据；资料不足或对象不匹配转人工",
           "url": "https://jade-bavarois-c89e95.netlify.app"
         },
         {
           "label": "顾问版 · 查条款",
+          "desc": "查条款带原文与出处；证据不足拒答，冲突并列交人工裁决",
           "url": "https://voluble-sherbet-d8c940.netlify.app"
         }
       ]
@@ -275,6 +278,7 @@ window.SITE_CONTENT = {
           "url": "https://clinquant-pie-ebd6fd.netlify.app"
         }
       ],
+      "demoNote": "在线体验：匿名访客也能走完整闭环（需求 → 分析 → 发布 → 下载 .md），无需注册。",
       "highlights": [
         "匿名闭环：提交需求 → 分析面板 → 发布需求文档 → 下载 .md",
         "导出内容明确标注 AI 生成、仍待确认的部分，避免把推断包装成已确认需求",
@@ -322,6 +326,7 @@ window.SITE_CONTENT = {
           "url": "https://jade-bavarois-c89e95.netlify.app"
         }
       ],
+      "demoNote": "资料可自备：可换成你自己的政策文档（.md / .txt / .json）；文件只在浏览器里解析，不会上传服务器。",
       "highlights": [
         "将 Coze 原型迁移为可本地运行的 LangGraph + DeepSeek 版本，并剥离平台私有 SDK",
         "项目记录：基础验收 13/13；外接资料库 10/10；本地版本带 bge-small-zh 向量召回",
@@ -369,6 +374,7 @@ window.SITE_CONTENT = {
           "url": "https://voluble-sherbet-d8c940.netlify.app"
         }
       ],
+      "demoNote": "资料可自备：条款库可换成你自己的（.json / .md / .txt），文件在浏览器内解析；线上演示为模型模式（DeepSeek）。",
       "highlights": [
         "全部条款为模拟数据（页头与 README 均标注），不是任何公司的真实口径",
         "回答必须带原文与出处；库外问题拒答，不用“最接近的几条”凑成答案",

@@ -319,11 +319,14 @@
     if (hero.intro) host.appendChild(el("p", "muted", hero.intro));
     var links = el("div", "stack");
     (hero.links || []).forEach(function (link) {
+      var item = el("div", "hero-app");
       var a = el("a", "link-arrow", link.label || link.url || "");
       a.href = link.url || "#";
       a.target = "_blank";
       a.rel = "noopener";
-      links.appendChild(a);
+      item.appendChild(a);
+      if (link.desc) item.appendChild(el("p", "hero-app__desc", link.desc));
+      links.appendChild(item);
     });
     if (links.childNodes.length) host.appendChild(links);
     if (hero.direction) host.appendChild(el("p", "mono muted", "方向：" + hero.direction));
@@ -672,6 +675,31 @@
       });
       clear(linkHost);
       linkHost.appendChild(linkFragment);
+    }
+
+    /* 在线体验：详情页顶部主入口；没有演示链接的项目（如 AI-OS）不显示 */
+    var demoHost = $("[data-detail='demo-cta']");
+    var demoLink = links.filter(function (link) {
+      return /演示|体验/.test(link.label || "");
+    })[0];
+    if (demoHost) {
+      clear(demoHost);
+      if (demoLink) {
+        var demoBtn = el("a", "btn btn--primary");
+        demoBtn.href = demoLink.url;
+        demoBtn.rel = "noopener";
+        if (/^https?:/i.test(demoLink.url)) demoBtn.target = "_blank";
+        demoBtn.appendChild(el("span", "btn__label", "在线体验 · 打开演示"));
+        demoBtn.appendChild(icon("external"));
+        demoHost.appendChild(demoBtn);
+      }
+      demoHost.hidden = !demoLink;
+    }
+
+    var demoNoteHost = $("[data-detail='demo-note']");
+    if (demoNoteHost) {
+      demoNoteHost.textContent = project.demoNote || "";
+      demoNoteHost.hidden = !project.demoNote;
     }
 
     var pager = $("[data-detail='pager']");

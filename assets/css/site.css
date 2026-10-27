@@ -459,6 +459,14 @@ hr {
   margin-top: var(--space-6);
 }
 
+/* 详情页顶部：在线体验主入口（跟着 .stack 的 gap 排，不再额外加 margin） */
+.detail-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
 .hero__aside {
   display: flex;
   flex-direction: column;
@@ -1148,6 +1156,18 @@ hr {
   gap: var(--space-2);
   font-weight: 600;
   text-decoration: none;
+}
+
+/* 首页 hero-card 里的每个在线应用：链接 + 一句简介 */
+.hero-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hero-app__desc {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
 }
 
 .link-arrow .icon {
