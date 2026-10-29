@@ -376,7 +376,15 @@
     list.forEach(function (item) {
       var card = el("div", "evidence reveal");
       card.appendChild(el("p", "evidence__value", item.value || ""));
-      card.appendChild(el("p", "evidence__label", item.label || ""));
+      if (item.url) {
+        var link = el("a", "evidence__label", item.label || item.url);
+        link.href = item.url;
+        link.rel = "noopener";
+        if (/^https?:/i.test(item.url)) link.target = "_blank";
+        card.appendChild(link);
+      } else {
+        card.appendChild(el("p", "evidence__label", item.label || ""));
+      }
       if (item.note) card.appendChild(el("p", "evidence__note", item.note || ""));
       fragment.appendChild(card);
     });
@@ -553,13 +561,9 @@
       });
       flowHost.hidden = flowSteps.length === 0;
     }
+    var flowBlock = $("[data-flow-block]");
+    if (flowBlock) flowBlock.hidden = flowSteps.length === 0;
 
-    /* 方向进展提示（仅填了该字段的项目显示） */
-    var directionNote = detail.directionNote || "";
-    var directionNoteWrap = $("[data-detail='direction-note-wrap']");
-    if (directionNoteWrap) directionNoteWrap.hidden = !directionNote;
-    var directionNoteHost = $("[data-detail='direction-note']");
-    if (directionNoteHost) directionNoteHost.textContent = directionNote;
 
     var cover = $("[data-detail='cover']");
     if (cover) {
@@ -752,21 +756,6 @@
       eduHost.appendChild(eduFragment);
     }
 
-    var principleHost = $("[data-render='principles']");
-    var principles = Array.isArray(PROFILE.principles) ? PROFILE.principles : [];
-    if (principleHost && principles.length) {
-      var principleFragment = document.createDocumentFragment();
-      principles.forEach(function (item, index) {
-        var card = el("div", "capability reveal");
-        card.appendChild(el("p", "capability__index", String(index + 1).padStart(2, "0")));
-        card.appendChild(el("h3", null, item.title || ""));
-        card.appendChild(el("p", null, item.text || ""));
-        principleFragment.appendChild(card);
-      });
-      clear(principleHost);
-      principleHost.appendChild(principleFragment);
-      observeReveals(principleHost);
-    }
 
     var positioningHost = $("[data-render='positioning']");
     var positioning = Array.isArray(PROFILE.positioning) ? PROFILE.positioning : [];

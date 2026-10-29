@@ -145,7 +145,7 @@
               <p class="eyebrow">在线项目</p>
             </div>
             <p class="muted text-sm" data-bind="profile.availability">
-              可全职投入，2027 年毕业
+              可全职实习，2027 年毕业
             </p>
           </div>
         </div>
@@ -157,11 +157,22 @@
             <h2>我能做什么</h2>
             <p class="mono muted">按工作环节</p>
           </div>
+          <p class="muted">以下是个人项目里的做法，不是企业团队协作经验。</p>
           <div class="grid grid--3" data-render="capabilities">
             <div class="capability">
               <p class="capability__index">01</p>
               <h3>把模糊需求说清楚</h3>
-              <p>把一句话想法拆成可确认的需求、约束与待确认事项。</p>
+              <p>把一句话想法拆成可确认的需求、约束与待确认事项，让后面真正动手的人少返工。</p>
+            </div>
+            <div class="capability">
+              <p class="capability__index">02</p>
+              <h3>把 AI 产出变成可核验的结果</h3>
+              <p>设计测试、探针与真实验收路径，区分「看起来完成」和「实际可用」。</p>
+            </div>
+            <div class="capability">
+              <p class="capability__index">03</p>
+              <h3>把问题定位到可复现的层面</h3>
+              <p>从日志、接口与真实访问路径复现问题，先定位，再决定改实现还是改方向。</p>
             </div>
           </div>
         </div>
@@ -171,9 +182,25 @@
         <div class="container">
           <div class="section-head">
             <h2>可核验的证据</h2>
-            <p class="mono muted">都能点开或复跑</p>
+            <p class="mono muted">能点开、有记录</p>
           </div>
-          <div class="grid grid--3" data-render="evidence"></div>
+          <div class="grid grid--3" data-render="evidence">
+            <div class="evidence">
+              <p class="evidence__value">3</p>
+              <p class="evidence__label">个在线可点开的 AI 应用</p>
+              <p class="evidence__note">匿名可用，无需注册</p>
+            </div>
+            <div class="evidence">
+              <p class="evidence__value">4</p>
+              <p class="evidence__label">个项目都带测试或探针记录</p>
+              <p class="evidence__note">数字与口径在各自项目页，不把通过数当可靠率</p>
+            </div>
+            <div class="evidence">
+              <p class="evidence__value">1</p>
+              <p class="evidence__label">个上游开源 PR（评审中）</p>
+              <p class="evidence__note">Dify #44861：+58/−2，3 个新单测</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -206,23 +233,7 @@
             <h2>从项目里学到的</h2>
             <p class="mono muted">协作 / 证据 / 发现 / 排查</p>
           </div>
-          <div class="grid grid--3" data-render="learnings"></div>
-        </div>
-      </section>
-
-      <section class="section section--alt">
-        <div class="container">
-          <div class="section-head">
-            <h2>工作原则</h2>
-            <p class="mono muted">三条判断标准</p>
-          </div>
-          <div class="grid grid--3" data-render="principles">
-            <div class="capability">
-              <p class="capability__index">01</p>
-              <h3>先问目标与上下文</h3>
-              <p>动手前先确认：目标是否明确、上下文是否足够且可信、Agent 实际执行了什么。</p>
-            </div>
-          </div>
+          <div class="grid grid--2" data-render="learnings"></div>
         </div>
       </section>
 
