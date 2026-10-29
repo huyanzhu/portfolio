@@ -115,12 +115,6 @@ window.SITE_CONTENT = {
         "value": "4",
         "label": "个项目都带测试或探针记录",
         "note": "数字与口径在各自项目页，不把通过数当可靠率"
-      },
-      {
-        "value": "1",
-        "label": "个上游开源 PR（评审中）",
-        "note": "Dify #44861：+58/−2，3 个新单测",
-        "url": "https://github.com/langgenius/dify/pull/44861"
       }
     ],
     "skillGroups": [
