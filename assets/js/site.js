@@ -347,6 +347,44 @@
     });
   });
 
+  /* --------------------------------------------------------- 能做什么 -- */
+  var renderCapabilities = safe(function () {
+    var host = $("[data-render='capabilities']");
+    if (!host) return;
+    var list = PROFILE.capabilities || [];
+    if (!list.length) return;
+    var fragment = document.createDocumentFragment();
+    list.forEach(function (item, index) {
+      var card = el("div", "capability reveal");
+      card.appendChild(el("p", "capability__index", String(index + 1).padStart(2, "0")));
+      card.appendChild(el("h3", null, item.title || ""));
+      card.appendChild(el("p", null, item.text || ""));
+      fragment.appendChild(card);
+    });
+    clear(host);
+    host.appendChild(fragment);
+    observeReveals(host);
+  });
+
+  /* --------------------------------------------------------- 证据条 -- */
+  var renderEvidence = safe(function () {
+    var host = $("[data-render='evidence']");
+    if (!host) return;
+    var list = PROFILE.evidence || [];
+    if (!list.length) return;
+    var fragment = document.createDocumentFragment();
+    list.forEach(function (item) {
+      var card = el("div", "evidence reveal");
+      card.appendChild(el("p", "evidence__value", item.value || ""));
+      card.appendChild(el("p", "evidence__label", item.label || ""));
+      if (item.note) card.appendChild(el("p", "evidence__note", item.note || ""));
+      fragment.appendChild(card);
+    });
+    clear(host);
+    host.appendChild(fragment);
+    observeReveals(host);
+  });
+
   /* ----------------------------------------------------------- 作品卡片 -- */
   function projectCard(project) {
     var card = el("a", "project-card reveal");
@@ -408,119 +446,38 @@
 
   /* --------------------------------------------------------- 作品列表页 -- */
   var renderProjectsPage = safe(function () {
-    var host = $("[data-render='all-projects']");
-    if (!host) return;
+    var appsHost = $("[data-render='group-apps']");
+    var labHost = $("[data-render='group-lab']");
+    if (!appsHost && !labHost) return;
 
-    var filterHost = $("[data-render='project-filters']");
-    var countHost = $("[data-render='project-count']");
-    var emptyHost = $("[data-render='projects-empty']");
-    var active = "all";
-    var buttons = [];
+    var pool = visibleProjects();
+    var apps = pool.filter(function (project) {
+      return project.group !== "lab";
+    });
+    var lab = pool.filter(function (project) {
+      return project.group === "lab";
+    });
 
-    function tagList() {
-      var seen = {};
-      var out = [];
-      visibleProjects().forEach(function (project) {
-        (project.tags || []).forEach(function (tag) {
-          if (typeof tag === "string" && tag && !seen[tag]) {
-            seen[tag] = true;
-            out.push(tag);
-          }
-        });
-      });
-      return out;
-    }
-
-    function draw() {
-      var pool = visibleProjects();
-      var shown = pool.filter(function (project) {
-        if (active === "all") return true;
-        return (project.tags || []).indexOf(active) !== -1;
-      });
-
+    function fill(host, list) {
+      if (!host) return;
       var fragment = document.createDocumentFragment();
-      shown.forEach(function (project) {
+      list.forEach(function (project) {
         fragment.appendChild(projectCard(project));
       });
-      /* 全部构建成功后才替换 DOM：中途出错不会留下空白容器 */
       clear(host);
       host.appendChild(fragment);
-
-      if (countHost) {
-        countHost.textContent = label("caseCount", "{n} 个案例").replace(
-          "{n}",
-          String(shown.length)
-        );
-      }
-      if (emptyHost) {
-        var noData = pool.length === 0;
-        emptyHost.hidden = shown.length !== 0;
-        var emptyTitle = $("h3", emptyHost);
-        var emptyHint = $("p", emptyHost);
-        var emptyReset = $("[data-empty-reset]", emptyHost);
-        if (emptyTitle) {
-          emptyTitle.textContent = noData
-            ? "还没有发布项目"
-            : label("emptyProjects", "这个标签下还没有项目");
-        }
-        if (emptyHint) {
-          emptyHint.textContent = noData
-            ? label("noProjectsHint", "内容正在整理中，稍后再来看看。")
-            : label("emptyProjectsHint", "换个标签，或者查看全部作品。");
-        }
-        if (emptyReset) emptyReset.hidden = noData;
-        if (noData && !draw._warned && window.console && console.warn) {
-          /* 给站主看的排查提示，不占用访客可见的文案 */
-          console.warn(
-            "[portfolio] projects 为空：请在 assets/js/content.js 的 projects 数组里添加项目。"
-          );
-          draw._warned = true;
-        }
-      }
-
       observeReveals(host);
     }
 
-    function setActive(value) {
-      active = value;
-      buttons.forEach(function (btn) {
-        btn.setAttribute(
-          "aria-pressed",
-          btn.getAttribute("data-value") === active ? "true" : "false"
-        );
-      });
-      draw();
-    }
+    fill(appsHost, apps);
+    fill(labHost, lab);
 
-    if (filterHost) {
-      var tags = [{ label: label("filterAll", "全部"), value: "all" }].concat(
-        tagList().map(function (tag) {
-          return { label: tag, value: tag };
-        })
-      );
-      clear(filterHost);
-      tags.forEach(function (item) {
-        var btn = el("button", "filter__btn", item.label);
-        btn.type = "button";
-        btn.setAttribute("data-value", item.value);
-        btn.setAttribute("aria-pressed", item.value === active ? "true" : "false");
-        btn.addEventListener("click", function () {
-          setActive(item.value);
-        });
-        filterHost.appendChild(btn);
-        buttons.push(btn);
-      });
-      filterHost.hidden = tags.length <= 1;
-    }
-
-    var resetBtn = $("[data-empty-reset]");
-    if (resetBtn) {
-      resetBtn.addEventListener("click", function () {
-        setActive("all");
-      });
-    }
-
-    draw();
+    /* 某一组为空时隐藏组标题，避免出现空区块 */
+    var labHead = $("[data-lab-head]");
+    var labEmpty = lab.length === 0;
+    if (labHead) labHead.hidden = labEmpty;
+    if (labHost) labHost.hidden = labEmpty;
+    if (appsHost) appsHost.hidden = apps.length === 0;
   });
 
   /* ------------------------------------------------------------- 详情页 -- */
@@ -584,8 +541,20 @@
     fill("[data-detail='decisions']", detail.decisions);
     fill("[data-detail='verification']", detail.verification);
     fill("[data-detail='outcome']", detail.outcome);
+    fill("[data-detail='next']", detail.next);
 
-    /* 方向进展提示（仅填了该字段的项目显示；链接固定指向关于页 #direction） */
+    /* 实现链路：详情页的可视化证据链（有数据才显示） */
+    var flowSteps = Array.isArray(detail.flow) ? detail.flow : [];
+    var flowHost = $("[data-detail='flow']");
+    if (flowHost) {
+      clear(flowHost);
+      flowSteps.forEach(function (step) {
+        flowHost.appendChild(el("li", "flow__step", step));
+      });
+      flowHost.hidden = flowSteps.length === 0;
+    }
+
+    /* 方向进展提示（仅填了该字段的项目显示） */
     var directionNote = detail.directionNote || "";
     var directionNoteWrap = $("[data-detail='direction-note-wrap']");
     if (directionNoteWrap) directionNoteWrap.hidden = !directionNote;
@@ -819,18 +788,6 @@
       });
       clear(bioHost);
       bioHost.appendChild(bioFragment);
-    }
-
-    var directionHost = $("[data-render='direction']");
-    var direction =
-      PROFILE.direction && Array.isArray(PROFILE.direction.paragraphs) ? PROFILE.direction.paragraphs : [];
-    if (directionHost && direction.length) {
-      var directionFragment = document.createDocumentFragment();
-      direction.forEach(function (paragraph) {
-        directionFragment.appendChild(el("p", null, paragraph));
-      });
-      clear(directionHost);
-      directionHost.appendChild(directionFragment);
     }
   });
 
@@ -1136,6 +1093,8 @@
     initNav();
     renderHeroCard();
     renderLearnings();
+    renderCapabilities();
+    renderEvidence();
     renderFeatured();
     renderProjectsPage();
     renderDetail();

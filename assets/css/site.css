@@ -1336,3 +1336,54 @@ hr {
     color: #444;
   }
 }
+
+
+/* 首页 · 可核验证据条（结果要能被看到） */
+.evidence {
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.evidence__value {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  color: var(--accent);
+  letter-spacing: var(--ls-tight);
+}
+.evidence__label {
+  margin-top: var(--space-2);
+  font-weight: 600;
+}
+.evidence__note {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+
+/* 详情页 · 实现链路（证据链的可视化） */
+.flow {
+  list-style: none;
+  counter-reset: flow;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+}
+.flow__step {
+  counter-increment: flow;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+}
+.flow__step::before {
+  content: counter(flow) " ";
+  color: var(--accent);
+  font-family: var(--font-mono);
+}

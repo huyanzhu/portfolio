@@ -117,39 +117,31 @@
       <section class="section section--tight">
         <div class="container">
           <div class="section-head">
-            <div class="filter" data-render="project-filters" role="group" aria-label="按标签筛选作品">
-              <button class="filter__btn" type="button" aria-pressed="true">全部</button>
-            </div>
-            <p class="mono muted" data-render="project-count" aria-live="polite">4 个项目</p>
+            <h2>应用交付</h2>
+            <p class="mono muted">能点开、能复跑</p>
           </div>
-
-          <div
-            class="grid grid--3"
-            data-render="all-projects"
-            role="region"
-            aria-label="作品列表"
-          >
+          <div class="grid grid--3" data-render="group-apps" role="region" aria-label="应用交付">
             <a class="project-card" href="projects.html">
               <div class="project-card__media"></div>
               <div class="project-card__body">
                 <div class="project-card__top"><h3 class="project-card__title">作品加载中</h3></div>
-                <p class="project-card__summary">
-                  如果没有看到作品列表，说明页面脚本未能运行，可直接刷新重试。
-                </p>
+                <p class="project-card__summary">如果没有看到作品列表，说明页面脚本未能运行，可直接刷新重试。</p>
               </div>
             </a>
           </div>
 
-          <div class="empty" data-render="projects-empty" hidden>
-            <svg class="empty__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M15.5 8.5l-2 5-5 2 2-5z" />
-            </svg>
-            <h3>这个标签下还没有项目</h3>
-            <p>换个标签，或者查看全部作品。</p>
-            <button class="btn btn--ghost" type="button" data-empty-reset>
-              <span class="btn__label">查看全部作品</span>
-            </button>
+          <div class="section-head" data-lab-head>
+            <h2>方法论实验</h2>
+            <p class="mono muted">不对外演示，讲判断</p>
+          </div>
+          <div class="grid grid--2" data-render="group-lab" role="region" aria-label="方法论实验">
+            <a class="project-card" href="projects.html">
+              <div class="project-card__media"></div>
+              <div class="project-card__body">
+                <div class="project-card__top"><h3 class="project-card__title">作品加载中</h3></div>
+                <p class="project-card__summary">没有看到内容说明脚本未运行，刷新重试。</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
