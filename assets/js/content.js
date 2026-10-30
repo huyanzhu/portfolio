@@ -117,7 +117,7 @@ window.SITE_CONTENT = {
         "note": "匿名可用，无需注册"
       },
       {
-        "value": "4",
+        "value": "5",
         "label": "个项目都带测试或探针记录",
         "note": "数字与口径在各自项目页，不把通过数当可靠率"
       }
@@ -291,7 +291,7 @@ window.SITE_CONTENT = {
         }
       ],
       "highlights": [
-        "4 个 PR 已并入 langgenius/dify；其中 1 个由真人评审（0 条 inline 意见）后合并，另 2 个获轻量 approve",
+        "4 个 PR 已并入 langgenius/dify；其中 1 个由真人评审（0 条 inline 意见）后合并，另 3 个获轻量 approve",
         "问题不是「代码写得不好」，而是测试没测到东西：fake session 按调用顺序返回预置行，SQL 谓词从未执行",
         "每个 PR 都做原树同文件对照：目录级失败逐条归因到环境既有，不把「原本就红」算成新增失败",
         "评审响应：按意见把断言从 .value 改为枚举比较（StrEnum 语义），复跑 61 passed 后推送"
