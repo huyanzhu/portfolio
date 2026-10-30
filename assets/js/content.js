@@ -107,6 +107,11 @@ window.SITE_CONTENT = {
     ],
     "evidence": [
       {
+        "value": "4",
+        "label": "个开源 PR 已并入 Dify",
+        "note": "测试可移植性改造（mock session → 真实 SQLite）；1 个在评审中"
+      },
+      {
         "value": "3",
         "label": "个在线可点开的 AI 应用",
         "note": "匿名可用，无需注册"
@@ -149,6 +154,16 @@ window.SITE_CONTENT = {
       }
     ],
     "experience": [
+      {
+        "company": "Dify（langgenius/dify）",
+        "role": "开源贡献 · 测试改造与评审响应",
+        "period": "2026.10",
+        "summary": "按 issue #44973 清单，把单测里伪造的 DB session 改成真实 SQLite 行；4 个 PR 已合并。",
+        "highlights": [
+          "4 个 PR 已合并（+165/−140 至 +38/−55），1 个评审中；每项都带原生 pytest + 原树对照 + ruff",
+          "响应评审：断言从 .value 改为枚举比较，复跑 61 passed 后推送"
+        ]
+      },
       {
         "company": "顾问查条款工作台",
         "role": "个人项目 · 流程设计与验收",
@@ -239,6 +254,81 @@ window.SITE_CONTENT = {
     ]
   },
   "projects": [
+    {
+      "id": "dify-test-contributions",
+      "group": "lab",
+      "title": "Dify 开源贡献：把测试从 mock 搬到真实 SQLite",
+      "summary": "上游 issue #44973 是一份「清理测试里伪造 DB session」的清单：这些测试用回放预置结果的 fake session，SQL 从未真正执行。我按清单定位并改造：seed 真实行、让被测代码跑真查询，再用原生 pytest、未改动原树对照和 ruff 验证。4 个 PR 已合并进 langgenius/dify，1 个在评审中。",
+      "year": "2026",
+      "role": "开源贡献：定位 / 改造 / 验证 / 响应评审",
+      "featured": false,
+      "tags": [
+        "开源",
+        "测试改造",
+        "SQL"
+      ],
+      "cover": "assets/img/work-a11y-lens.svg",
+      "links": [
+        {
+          "label": "已合并 · KnowledgeFS 撤销命令",
+          "url": "https://github.com/langgenius/dify/pull/45052"
+        },
+        {
+          "label": "已合并 · Query-image 上传",
+          "url": "https://github.com/langgenius/dify/pull/45060"
+        },
+        {
+          "label": "已合并 · workflow publish service",
+          "url": "https://github.com/langgenius/dify/pull/45078"
+        },
+        {
+          "label": "已合并 · home snapshot service",
+          "url": "https://github.com/langgenius/dify/pull/45125"
+        },
+        {
+          "label": "评审中 · message-end 文件序列化",
+          "url": "https://github.com/langgenius/dify/pull/45129"
+        }
+      ],
+      "highlights": [
+        "4 个 PR 已并入 langgenius/dify；其中 1 个由真人评审（0 条 inline 意见）后合并，另 2 个获轻量 approve",
+        "问题不是「代码写得不好」，而是测试没测到东西：fake session 按调用顺序返回预置行，SQL 谓词从未执行",
+        "每个 PR 都做原树同文件对照：目录级失败逐条归因到环境既有，不把「原本就红」算成新增失败",
+        "评审响应：按意见把断言从 .value 改为枚举比较（StrEnum 语义），复跑 61 passed 后推送"
+      ],
+      "detail": {
+        "flow": [
+          "从 issue 清单挑项",
+          "定位：fake session 掩盖了哪条查询",
+          "改造：seed 真实行 + 真实 session 跑查询",
+          "验证：原生 pytest + 原树对照 + ruff",
+          "提 PR（Part of #44973）· 响应评审"
+        ],
+        "next": "按清单继续推进剩余候选文件；#45129 等维护者重审；更早的 #44861 仍无人评审。",
+        "background": "langgenius/dify 的 issue #44973 是一份由机器人整理、维护者认可的清单：它把单测里「用伪造 session 返回预置行」的文件逐条列出，并按「持久化场景优先」排序。这类测试的问题很隐蔽——测试是绿的，但它验证的是 fake 的行为，不是真实 SQL 的行为；查询谓词写错、租户过滤漏掉，它都不会红。",
+        "contribution": "我按清单逐项处理：先在测试文件里找出 fake session 掩盖了哪条查询，再看被测代码希望验证什么（租户 / 所有者链过滤、吊销、提交时机），然后用 conftest 已提供的 sqlite_session 把真实行 seed 进去、让代码跑真查询；原先靠「检查 session.add 参数」或「手工解析编译后 SQL 参数名」的断言，改成回读真实行。每个 PR 只改一个文件、写明 Part of #44973（这是开放清单，不用 Fixes）。AI/Agent 参与实现，我负责选项目、定位、验收标准和结果核验。",
+        "decisions": "三个取舍：① 只改清单里「持久化场景」的项——清单另列了「刻意失败注入 / 无 DB」的用例，它们保留 mock 是合理的，不为了去掉 mock 而删覆盖；② 一个 PR 一个文件——评审面小、易核对，也便于逐条归因失败；③ 验证一定带「未改动原树对照」——目录级跑测试时出现的失败（如 knowledge_fs 目录 1153 passed / 6 failed）先确认原树同样红，才敢说不是自己引入的。",
+        "verification": "统一三层：目标文件原生 pytest 全绿（13 / 20 / 13 / 20 / 61 passed）；同目录或原树同文件对照，逐条判断「无新增失败」；ruff format --check + ruff check。评审侧另有一次真人复跑（#45052 的评审者在本地跑了 23 个测试、ruff、Pyrefly 0 diagnostics），并明确声明 hosted CI 尚未运行——这类边界我照实记录。",
+        "outcome": "已合并 4 个（KnowledgeFS 撤销命令 +165/−140、Query-image 上传 +78/−61、workflow publish service +57/−23、home snapshot +38/−55）；1 个在评审中（message-end 文件序列化 +38/−25，收到 1 条改动建议已修并复跑）；更早的 #44861（前节点输出截断可配置，+58/−2）提交 4 天仍无人评审。边界：只改测试不改生产代码；测试通过说明「测到了真实 SQL」，不等于功能本身被证明正确。"
+      },
+      "evidence": [
+        {
+          "label": "已合并 PR ×4",
+          "url": "https://github.com/langgenius/dify/pulls?q=is%3Apr+author%3Ahuyanzhu+is%3Amerged",
+          "note": "langgenius/dify · 2026-10-29 至 10-30 合并"
+        },
+        {
+          "label": "评审意见与响应",
+          "url": "https://github.com/langgenius/dify/pull/45129",
+          "note": "CHANGES_REQUESTED → 断言改用枚举比较 → 61 passed 复跑 → 推送 ed36fcb"
+        },
+        {
+          "label": "未合并 · 待评审",
+          "url": "https://github.com/langgenius/dify/pull/44861",
+          "note": "2026-10-27 提交，0 评审 0 评论"
+        }
+      ]
+    },
     {
       "id": "ai-os",
       "group": "lab",
